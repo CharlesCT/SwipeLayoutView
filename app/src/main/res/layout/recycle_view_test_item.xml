@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.example.ct.swipelayoutview.widget.SwipeLayout
+        android:id="@+id/swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="89dp">
+
+
+
+        <TextView
+                android:id="@+id/tv_content"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/item_normal_bg"
+                android:text="这里是第一个"
+                android:textColor="@android:color/black" />
+       <!-- 功能区开始。。。。。。。。。。。。。。。。。。。。-->
+        <TextView
+            android:id="@+id/btnTop"
+            android:layout_width="60dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="@drawable/top_bg_normal"
+            android:text="置顶"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/btnUnRead"
+            android:layout_width="120dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="@drawable/unread_bg_normal"
+            android:clickable="true"
+            android:text="标记未读"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/btnDelete"
+            android:gravity="center"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/delete_bg_normal"
+            android:text="删除"
+            android:textColor="@android:color/white"/>
+
+    </com.example.ct.swipelayoutview.widget.SwipeLayout>
+</LinearLayout>

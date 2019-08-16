@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <com.example.ct.swipelayoutview.widget.SwipeLayoutNew
+            android:id="@+id/swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="89dp">
+
+        <!-- 因为布局的时候是从一层一层盖住的，所以需要底层布局写在前面，
+        即使强行改变onLayout中view的层次，但是显示的效果还是xml中前面的为底层，
+        如果要实现自定义的绘制，需要重写onDraw方法，这里麻烦就不重写了。-->
+        <!-- 如果要使用Button，从5.0开始Button默认显示在了最上层，使用
+        stateListAnimator = null取消上层显示-->
+        <TextView
+                android:id="@+id/btnTop"
+                android:layout_width="60dp"
+                android:gravity="center"
+                android:layout_height="match_parent"
+                android:background="@drawable/top_bg_normal"
+                android:text="置顶"
+                android:textColor="@android:color/white"/>
+
+        <TextView
+                android:id="@+id/btnUnRead"
+                android:layout_width="120dp"
+                android:gravity="center"
+                android:layout_height="match_parent"
+                android:background="@drawable/unread_bg_normal"
+                android:clickable="true"
+                android:text="标记未读"
+                android:textColor="@android:color/white"/>
+
+        <TextView
+                android:id="@+id/btnDelete"
+                android:gravity="center"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/delete_bg_normal"
+                android:text="删除"
+                android:textColor="@android:color/white"/>
+        <TextView
+                android:id="@+id/tv_content"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/item_normal_bg"
+                android:text="这里是第一个"
+                android:textColor="@android:color/black" />
+    </com.example.ct.swipelayoutview.widget.SwipeLayoutNew>
+</LinearLayout>
