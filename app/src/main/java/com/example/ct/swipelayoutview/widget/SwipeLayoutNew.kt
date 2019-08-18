@@ -24,7 +24,7 @@ class SwipeLayoutNew @JvmOverloads constructor(
     private var mLimit                     = 0 //滑动判定的临界值（右侧菜单的40%），当手指抬起的时候小于这个临界值，就收起右侧菜单，大于了就展开menu。
     private var mDisplayWidth              = 0
 
-    private var isExpand                   = false //当前的View是够被展开
+    private var isExpand                   = false     //当前的View是够被展开
     private var isOnIntercept              = false    //处理 如果当前的列表中有展开的View，应该拦截一切点击事件。
     private var isOpenLink                 = true     //是否打开联动关闭
     @JvmField
@@ -37,7 +37,7 @@ class SwipeLayoutNew @JvmOverloads constructor(
         val sExplands: SparseArray<SwipeLayoutNew> = SparseArray()
 
     }
-    private var mLastP = PointF()
+    private var mLastP = PointF() //跟踪坐标
     private var mFirstP = PointF() //判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件，
     //防止多只手指一起滑动的
     private var isTouching = false
@@ -114,7 +114,6 @@ class SwipeLayoutNew @JvmOverloads constructor(
         //宽度设置为第一个item的宽度
         setMeasuredDimension(paddingLeft + paddingRight + mDisplayWidth,mHeight + paddingTop + paddingBottom)
         mLimit = mRightMenuWidth*3/10 //百分之30为滑动临界值
-        mScaleTouchSlop = mRightMenuWidth*2/10 //百分之10为视为滑动
         if(isNeedMeasureChildHeight){
             //主要是针对使用wrap_content的子View，让他和父布局一样的高
             forceUniformHeight(widthMeasureSpec)
@@ -205,13 +204,12 @@ class SwipeLayoutNew @JvmOverloads constructor(
                     //自身View展开 ，没有点击在功能区，进行关闭 ,并且拦截点击事件
                     isOnIntercept = true
                      closeAllExpland()
-                }else if ( mContentView!!.translationX  >= 0F){
-                    //自身view没有展开，但是点击在功能区了,进行关闭 拦截点击事件
 
+                }else if ( mContentView!!.translationX  >=0F && sExplands.size()>0){
+                    //自身view没有展开，但是点击在功能区了,进行关闭 拦截点击事件
                      closeAllExpland()
                     if(isOpenLink)
                      isOnIntercept = true
-
                 }
             }
 
